@@ -1,6 +1,7 @@
 import tweepy
 import csv
 import random
+import os
 
 # ─── Credentials ─────────────────────────────────────────────────────
 API_KEY = "dUzA1M0JI6Cp2CwKuHXUlVXmU"
@@ -11,7 +12,11 @@ BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAKCL2gEAAAAA7yIqjEZuDje%2Fh7RAqOQv25D8p3w%3D
 
 # ─── Load a random quote from quotes.csv ─────────────────────────────
 def get_random_quote():
-    with open("quotes.csv", "r", encoding="utf-8") as f:
+    # use absolute path, because cron doesn't run from same folder
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(base_dir, "quotes.csv")
+    with open(csv_path, "r", encoding="utf-8") as f:
+
         reader = csv.DictReader(f)
         quotes = [row for row in reader]
 
