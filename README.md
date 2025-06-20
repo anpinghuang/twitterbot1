@@ -27,3 +27,8 @@ As long as your VPS is running and cron is active, your scheduled job will run o
 
 [minutes] [hour] * * * [the path running "which python"] [path of file to run] >> [where to create logs] 2>&1
 
+# day 1 
+I made it post at every 16 UTC so... 
+0 16 * * * /root/venv/bin/python /root/twitterbot1/tweet_bot.py >> /root/twitterbot1/log.txt 2>&1
+
+if this works tomorrow (I'll check at night or something), then I'll have the code make 10 tweets instead of 1, then setup another account
